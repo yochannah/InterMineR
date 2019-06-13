@@ -59,7 +59,8 @@ setMethod(
 
         # run InterMineR query
         query.unencoded <- toString.XMLNode(query)
-        
+        print(query.unencoded)
+
         query.str <- URLencode(toString.XMLNode(query))
         query.str <- gsub("&", '%26', query.str)
         query.str <- gsub(";", '%3B', query.str)
@@ -68,7 +69,7 @@ setMethod(
                        query.str,"&format=xml",sep=""))
         #If there's any HTTP error, print the query as well for easier debugging.
         stop_for_status(r, paste("query", query.unencoded))
-        
+
         res <- content(r)
         res.xml <- xmlRoot(xmlParse(res))
 
@@ -98,6 +99,7 @@ setMethod(
 
       # run query
       query.unencoded <- toString.XMLNode(query)
+      print(query.unencoded)
 
       query.str <- URLencode(toString.XMLNode(query))
       query.str <- gsub("&", '%26', query.str)
@@ -144,6 +146,8 @@ setMethod(
 
     query.unencoded <- toString.XMLNode(query)
 
+    print(query.unencoded)
+    
     query.str <- URLencode(query.unencoded)
     query.str <- gsub("&", '%26', query.str)
     query.str <- gsub(";", '%3B', query.str)
@@ -170,4 +174,3 @@ setMethod(
 
   }
 )
-
